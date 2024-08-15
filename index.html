@@ -26,8 +26,8 @@
             padding: 0;
             overflow: hidden; /* Prevent scrolling */
             position: relative;
-            background: black; /* Fallback background color */
-            cursor: none; /* Hide the cursor to reduce interactions */
+            cursor: none; /* Hide the cursor */
+            background-color: black; /* Fallback background color */
         }
 
         body {
@@ -112,17 +112,20 @@
             user-select: none;         /* Disable selection on all other browsers */
         }
 
-        body:before {
+        /* Overlay to prevent right-clicking and image saving */
+        body::before {
             content: '';
-            position: absolute;
+            position: fixed; /* Cover the entire viewport */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0); /* Transparent overlay */
-            pointer-events: none; /* Allows interaction with underlying content */
+            pointer-events: auto; /* Enable pointer events for the overlay */
+            z-index: 10; /* Ensure the overlay is above other content */
         }
 
+        /* Ensure images are not interactable */
         img {
             pointer-events: none; /* Disable interaction with images */
         }
