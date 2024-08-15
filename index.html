@@ -26,13 +26,13 @@
             padding: 0;
             overflow: hidden; /* Prevent scrolling */
             position: relative;
-            cursor: none; /* Hide the cursor */
             background-color: black; /* Fallback background color */
         }
 
         body {
-            background: url('background.jpg') no-repeat top right fixed; /* Background image */
+            background: url('background.jpg') no-repeat right top; /* Background image with top-right alignment */
             background-size: cover;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -46,73 +46,14 @@
             padding-right: env(safe-area-inset-right); /* Adjust for the right inset */
         }
 
-        .top-links {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-        }
-
-        .top-links a {
-            color: white;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .top-links a:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .container {
-            background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text readability */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            background-color: #ff6b6b;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #ff4c4c;
-        }
-
         /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
             body {
-                background-position: 80% top; /* Further adjust to ensure the face is visible */
+                background-position: right 20% top; /* Adjust to ensure more of the right side is visible on mobile */
             }
         }
 
-        /* Disable Right-Click */
-        body {
-            -webkit-user-select: none; /* Disable selection on WebKit browsers */
-            -moz-user-select: none;    /* Disable selection on Mozilla browsers */
-            -ms-user-select: none;     /* Disable selection on IE/Edge browsers */
-            user-select: none;         /* Disable selection on all other browsers */
-        }
-
-        /* Overlay to prevent right-clicking and image saving */
+        /* Prevent Right-Click */
         body::before {
             content: '';
             position: fixed; /* Cover the entire viewport */
@@ -125,12 +66,32 @@
             z-index: 10; /* Ensure the overlay is above other content */
         }
 
-        /* Ensure images are not interactable */
-        img {
-            pointer-events: none; /* Disable interaction with images */
+        /* Disable Selection and Dragging */
+        html, body {
+            -webkit-user-select: none; /* Disable selection on WebKit browsers */
+            -moz-user-select: none;    /* Disable selection on Mozilla browsers */
+            -ms-user-select: none;     /* Disable selection on IE/Edge browsers */
+            user-select: none;         /* Disable selection on all other browsers */
+            -webkit-touch-callout: none; /* Prevent touch callout on mobile */
         }
     </style>
 </head>
 <body>
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent drag-and-drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent image saving via touch actions on mobile devices
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+    </script>
 </body>
 </html>

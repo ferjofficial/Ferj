@@ -12,24 +12,20 @@ html, body {
     padding: 0;
     overflow: hidden; /* Prevent scrolling */
     position: relative;
-    background: black; /* Fallback background color */
 }
 
 /* Set the background image and other styles */
 body {
-    background: url('background.jpg') no-repeat top right fixed; /* Start with top-right alignment */
+    background: url('background.jpg') no-repeat top right fixed; /* Top-right alignment */
     background-size: cover;
+    background-position: top right; /* Keep the top-right part visible */
+    background-attachment: fixed;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     color: white;
     text-align: center;
-    padding-top: env(safe-area-inset-top); /* Adjust for the top inset */
-    padding-bottom: env(safe-area-inset-bottom); /* Adjust for the bottom inset */
-    padding-left: env(safe-area-inset-left); /* Adjust for the left inset */
-    padding-right: env(safe-area-inset-right); /* Adjust for the right inset */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Style for top links */
@@ -45,7 +41,7 @@ body {
 .top-links a {
     color: white;
     text-decoration: none;
-    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     padding: 10px 15px;
     border-radius: 5px;
     transition: background 0.3s;
@@ -57,7 +53,7 @@ body {
 
 /* Container styles */
 .container {
-    background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text readability */
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
     padding: 20px;
     border-radius: 10px;
 }
@@ -85,9 +81,15 @@ p {
     background-color: #ff4c4c;
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 768px) {
-    body {
-        background-position: 80% top; /* Further adjust to ensure the face is visible */
-    }
+/* Prevent right-click and image dragging */
+body {
+    -webkit-user-select: none; /* Disable selection on WebKit browsers */
+    -moz-user-select: none;    /* Disable selection on Mozilla browsers */
+    -ms-user-select: none;     /* Disable selection on IE/Edge browsers */
+    user-select: none;         /* Disable selection on all other browsers */
+    -webkit-touch-callout: none; /* Prevent touch callout on mobile */
+}
+
+img {
+    pointer-events: none; /* Disable interaction with images */
 }
