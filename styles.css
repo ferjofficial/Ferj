@@ -1,8 +1,7 @@
-/* Reset some default browser styles */
-body, h1, p, a {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* Ensure the html and body elements occupy full height and prevent scrolling */
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Set the background image and other styles */
@@ -16,7 +15,8 @@ body {
     align-items: center;
     color: white;
     text-align: center;
-    background-color: black;
+    background-color: black; /* Fallback color */
+    position: relative; /* Ensure proper positioning of other elements */
 }
 
 /* Style for top links */
