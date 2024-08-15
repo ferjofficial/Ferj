@@ -19,6 +19,114 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+            position: relative;
+            background: black; /* Fallback background color */
+            cursor: none; /* Hide the cursor to reduce interactions */
+        }
+
+        body {
+            background: url('background.jpg') no-repeat top right fixed; /* Background image */
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: env(safe-area-inset-top); /* Adjust for the top inset */
+            padding-bottom: env(safe-area-inset-bottom); /* Adjust for the bottom inset */
+            padding-left: env(safe-area-inset-left); /* Adjust for the left inset */
+            padding-right: env(safe-area-inset-right); /* Adjust for the right inset */
+        }
+
+        .top-links {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .top-links a:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff4c4c;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            body {
+                background-position: 80% top; /* Further adjust to ensure the face is visible */
+            }
+        }
+
+        /* Disable Right-Click */
+        body {
+            -webkit-user-select: none; /* Disable selection on WebKit browsers */
+            -moz-user-select: none;    /* Disable selection on Mozilla browsers */
+            -ms-user-select: none;     /* Disable selection on IE/Edge browsers */
+            user-select: none;         /* Disable selection on all other browsers */
+        }
+
+        body:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0); /* Transparent overlay */
+            pointer-events: none; /* Allows interaction with underlying content */
+        }
+
+        img {
+            pointer-events: none; /* Disable interaction with images */
+        }
+    </style>
 </head>
 <body>
 </body>
