@@ -1,3 +1,10 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Ensure the html and body elements occupy full height and prevent scrolling */
 html, body {
     height: 100%;
@@ -5,6 +12,7 @@ html, body {
     padding: 0;
     overflow: hidden; /* Prevent scrolling */
     position: relative;
+    background: black; /* Fallback background color */
 }
 
 /* Set the background image and other styles */
@@ -18,7 +26,6 @@ body {
     align-items: center;
     color: white;
     text-align: center;
-    background-color: black; /* Fallback color */
     padding-top: env(safe-area-inset-top); /* Adjust for the top inset */
     padding-bottom: env(safe-area-inset-bottom); /* Adjust for the bottom inset */
     padding-left: env(safe-area-inset-left); /* Adjust for the left inset */
