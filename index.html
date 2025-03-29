@@ -19,12 +19,67 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 
+    <!-- Farcaster Frame Metadata -->
+    <meta name="fc:frame" content='{"type": "frame", "version": "v2", "image": "https://yourwebsite.com/path-to-image.png", "post_url": "https://yourwebsite.com/api/frame-handler", "buttons": [{"label": "Open Mini App", "action": "post"}]}'>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault(); /* Disable right-click context menu */
         });
+        
     </script>
 </head>
 <body>
+    <!-- Your existing content here -->
+    <script src="https://cdn.jsdelivr.net/npm/@farcaster/frame-sdk">
+<script>
+  // Initialize the Farcaster SDK
+  const sdk = new Farcaster.SDK();
+
+  // Event listener for when the frame is added
+  sdk.on('frameAdded', (context) => {
+    console.log('Mini app added:', context);
+    // Additional setup or UI adjustments can be made here
+  });
+
+  // Event listener for when the frame is removed
+  sdk.on('frameRemoved', () => {
+    console.log('Mini app removed');
+    // Clean up resources or reset UI elements here
+  });
+
+  // Event listener for when notifications are enabled
+  sdk.on('notificationsEnabled', (details) => {
+    console.log('Notifications enabled:', details);
+    // Handle notification setup here
+  });
+
+  // Event listener for when notifications are disabled
+  sdk.on('notificationsDisabled', () => {
+    console.log('Notifications disabled');
+    // Handle notification teardown here
+  });
+</script>
+<script>
+  // Function to adjust the layout based on safe area insets
+  function adjustLayoutForSafeArea(insets) {
+    if (insets) {
+      document.body.style.paddingTop = `${insets.top}px`;
+      document.body.style.paddingBottom = `${insets.bottom}px`;
+      document.body.style.paddingLeft = `${insets.left}px`;
+      document.body.style.paddingRight = `${insets.right}px`;
+    }
+  }
+
+  // Listen for the 'frameAdded' event to adjust layout
+  sdk.on('frameAdded', () => {
+    const insets = sdk.context.client.safeAreaInsets;
+    adjustLayoutForSafeArea(insets);
+  });
+</script>
+
+
+    </script>
+
 </body>
 </html>
